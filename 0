@@ -12,5 +12,18 @@ server             > client
 
 communication established
 
+[Server]
+>>> Keep message history
+>>> Manage whitelisted and connected IPs/Clients
+>>> Handle connection termination and client requests
+>>> Administrative tools
+>>> Setup, Encryption creator
+>>> Safe key storage
+>>> Key deletion and reset
+
+
+[Client]
 >>> Synchronize message history
 >>> Connect to real-time encrypted channel
+>>> Disconnect from ERTC
+>>> Forget all encryptions
