@@ -1,0 +1,16 @@
+encryption - aes256
+
+public    > private
+encrypt   > decrypt
+
+client             > server
+>>> server.checkIfWhitelisted(client)
+client.1timeCypher > server.publicKey
+>>> server.send(cypher.encrypt(client.1timeCypher))
+server             > client
+>>> client recv(server.cypher.decrypt(client.1timeCypher))
+
+communication established
+
+>>> Synchronize message history
+>>> Connect to real-time encrypted channel
