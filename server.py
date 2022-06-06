@@ -3,6 +3,7 @@ from twisted.internet.protocol import Protocol, connectionDone
 from twisted.internet.protocol import  ServerFactory as ServFactory
 from twisted.internet.endpoints import TCP4ServerEndpoint
 
+
 class Server(Protocol):
     def __init__(self, users):
         self.users = users
