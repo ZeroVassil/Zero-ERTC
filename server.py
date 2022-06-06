@@ -14,7 +14,17 @@ class Server(Protocol):
 class ServerFactory(ServFactory):
     def buildProtocol(self, addr):
         return Server()
+
 if __name__ == "__main__":
-    endpoint = TCP4ServerEndpoint(reactor, 6667)
-    endpoint.listen(ServerFactory())
-    reactor.run()
+    def is_admin():
+        try:
+            return ctypes.windll.shell32.IsUserAnAdmin()
+        except:
+            return False
+    if is_admin():
+        endpoint = TCP4ServerEndpoint(reactor, 6667)
+        endpoint.listen(ServerFactory())
+        reactor.run()
+    else:
+        # Re-run the program with admin rights
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
