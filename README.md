@@ -2,7 +2,7 @@ before running anything make sure you have installed required python modules,
 you can do this by entering the directory in which the script files are saved
 and then installing the requirements by running:   
 ```
-python -m install --upgrade pip
+python -m pip install --upgrade pip
 ```
 then:
 ```
