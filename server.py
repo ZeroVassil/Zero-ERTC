@@ -29,9 +29,12 @@ class Server(Protocol):
         if not self.name:
             self.addUser(data)
             return
-        for protocol in self.users.keys():
-            if protocol != self:
-                protocol.transport.write(f"{self.name}: {data}".encode("utf-8"))
+        if data == "#!#  CLIENT TERMINATION NOTICE  #!#":
+            self.transport.loseConnection()
+        else:
+            for protocol in self.users.keys():
+                if protocol != self:
+                    protocol.transport.write(f"{self.name}: {data}".encode("utf-8"))
 
 
 class ServerFactory(ServFactory):
